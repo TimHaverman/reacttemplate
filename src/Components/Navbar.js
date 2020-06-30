@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FaAlignRight } from 'react-icon/fa';
+import { FaAlignRight } from "react-icons/fa";
+import {Logo} from "../Images/logo192.png";
 
 export default class Navbar extends Component {
     state={
@@ -9,7 +10,7 @@ export default class Navbar extends Component {
     handleToggle = () =>{
         this.setState({isOpen:!this.setState.isOpen});
     };
-
+    
     render() {
         return (
             <nav className="navbar">

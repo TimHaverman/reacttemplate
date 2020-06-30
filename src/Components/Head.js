@@ -1,8 +1,8 @@
 import React from "react";
-const Head = ({ stuff, title, subtitle }) => {
+const Head = ({ stuff, banner, subtitle }) => {
     return (
         <div className="Head">
-            <h1>{title}</h1>
+            <h1>{banner}</h1>
             <p>{subtitle}</p>
             {stuff}
         </div>

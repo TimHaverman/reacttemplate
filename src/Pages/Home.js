@@ -1,6 +1,6 @@
 import React from 'react';
-import Worker from '../components/Worker.js';
-import Head from '../components/Head.js';
+import Worker from '../Components/Worker.js';
+import Head from '../Components/Head.js';
 import { Link } from "react-router-dom";
 
 const Home = () => {
