@@ -1,10 +1,10 @@
 import React from "react";
-const Head = ({ stuff, banner, subtitle }) => {
+const Head = ({ children, banner, subbanner }) => {
     return (
         <div className="Head">
             <h1>{banner}</h1>
-            <p>{subtitle}</p>
-            {stuff}
+            <p>{subbanner}</p>
+            {children}
         </div>
     );
 };

@@ -1,21 +1,21 @@
 import React from "react";
-import Worker from "../components/Hero";
-import Head from "../components/Banner";
+import Worker from "../Components/Worker";
+import Head from "../Components/Banner";
 import { Link } from "react-router-dom";
-import RoomsContainer from "../components/RoomsContainer";
-const Rooms = () => {
+import ProductsContainer from "../Components/ProductsContainer";
+const Products = () => {
   return (
     <>
-      <Worker hero="roomsHero">
-        <Head title="our rooms">
+      <Worker worker="productsWorker">
+        <Head title="our products">
           <Link to="/" className="btn-primary">
             return home
           </Link>
         </Head>
       </Worker>
-      <RoomsContainer />
+      <ProductsContainer />
     </>
   );
 };
 
-export default Rooms;
+export default Products;

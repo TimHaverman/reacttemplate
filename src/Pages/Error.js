@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Error = () => {
     return (
         <Worker>
-            <Head title="404" subtitle="page not found">
+            <Head banner="404" subbanner="page not found">
                 <Link to="/" className="btn-primary">
                 Return Home
                 </Link>

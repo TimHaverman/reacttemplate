@@ -1,20 +1,20 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import defaultImg from '../images/room-1.jpeg';
+import defaultImg from '../Images/product-1.jpeg';
 import PropTypes from "prop-types";
 import { memo } from "react";
 
     const Product = memo(({ product }) => {
-        const { name, filler, images, price} = product;
+        const { name, slug, images, price} = product;
     return (
         <article className="product">
             <div className="img-container">
-                <img src={images[0] || defaultImg} alt="single" />
+                <img src={images[0] || defaultImg} alt="single product" />
                 <div className="price-top">
                     <h6>${price}</h6>
                     <p>per </p>
                 </div>
-                <Link to={`/product/${filler}`} className="btn-primary product link">
+                <Link to={`/Products/${slug}`} className="btn-primary product-link">
                     Features
                 </Link>
             </div>
@@ -24,9 +24,9 @@ import { memo } from "react";
 });
 
 Product.propTypes={
-    room:PropTypes.shape({
+    product: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        filler: PropTypes.string.isRequired,
+        slug: PropTypes.string.isRequired,
         images: PropTypes.arrayOf(PropTypes.string).isRequired,
         price: PropTypes.number.isRequired,
     })

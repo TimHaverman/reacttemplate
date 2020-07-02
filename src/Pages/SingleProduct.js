@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import defaultBcg from "../Images/product-1.jpeg";
-import Worker from "../Components/Worker";
+//import Worker from "../Components/Worker";
 import Head from "../Components/Head";
 import { Link } from "react-router-dom";
 import {ProductContext} from "../context";
@@ -27,7 +27,7 @@ export default class SingleProduct extends Component {
       return (
         <div className="error">
           <h3> no such product could be found...</h3>
-          <Link to="/product" className="btn-primary">
+          <Link to="/Products" className="btn-primary">
             back to product
           </Link>
         </div>
@@ -48,8 +48,8 @@ export default class SingleProduct extends Component {
     return (
       <>
         <StyledWorker img={images[0] || this.state.defaultBcg}>
-          <Head title={`${name} product`}>
-            <Link to="/product" className="btn-primary">
+          <Head banner={`${name} product`}>
+            <Link to="/Products" className="btn-primary">
               back to product
             </Link>
           </Head>

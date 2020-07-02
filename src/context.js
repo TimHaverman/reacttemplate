@@ -6,9 +6,9 @@ const ProductContext = React.createContext();
 
 export default class ProductProvider extends Component {
     state = {
-    product: [],
-    sortedProduct: [],
-    featuredProduct: [],
+    products: [],
+    sortedProducts: [],
+    featuredProducts: [],
     loading: true,
     //
     type: "all",
@@ -23,18 +23,18 @@ export default class ProductProvider extends Component {
   // getData = async () => {
   //   try {
   //     let response = await Client.getEntries({
-  //       content_type: "beachResortRoom"
+  //       content_type: "beachResortproduct"
   //     });
-  //     let rooms = this.formatData(response.items);
+  //     let products = this.formatData(response.items);
 
-  //     let featuredRooms = rooms.filter(room => room.featured === true);
+  //     let featuredProducts = products.filter(product => product.featured === true);
   //     //
-  //     let maxPrice = Math.max(...rooms.map(item => item.price));
-  //     let maxSize = Math.max(...rooms.map(item => item.size));
+  //     let maxPrice = Math.max(...products.map(item => item.price));
+  //     let maxSize = Math.max(...products.map(item => item.size));
   //     this.setState({
-  //       rooms,
-  //       featuredRooms,
-  //       sortedRooms: rooms,
+  //       products,
+  //       featuredProducts,
+  //       sortedProducts: products,
   //       loading: false,
   //       //
   //       price: maxPrice,
@@ -48,15 +48,15 @@ export default class ProductProvider extends Component {
 
 componentDidMount() {
     // this.getData();
-    let product = this.formatData(items);
-    let featuredProduct = product.filter(product => product.featured === true);
+    let products = this.formatData(items);
+    let featuredProducts = products.filter(product => product.featured === true);
     //
-    let maxPrice = Math.max(...product.map(item => item.price));
-    let maxSize = Math.max(...product.map(item => item.size));
+    let maxPrice = Math.max(...products.map(item => item.price));
+    let maxSize = Math.max(...products.map(item => item.size));
     this.setState({
-    product,
-    featuredProduct,
-    sortedProduct: product,
+    products,
+    featuredProducts,
+    sortedProduct: products,
     loading: false,
       //
     price: maxPrice,
@@ -75,10 +75,10 @@ componentDidMount() {
     });
     return tempItems;
   }
-  getRoom = slug => {
-    let tempProduct = [...this.state.product];
-    const prod = tempProduct.find(prod => prod.slug === slug);
-    return prod;
+  getProduct = slug => {
+    let tempProducts = [...this.state.products];
+    const product = tempProducts.find(product => product.slug === slug);
+    return product;
   };
   handleChange = event => {
     const target = event.target;
@@ -90,12 +90,12 @@ componentDidMount() {
       {
         [name]: value
       },
-      this.filterProduct
+      this.filterProducts
     );
   };
-  filterProduct = () => {
+  filterProducts = () => {
     let {
-    product,
+    products,
       type,
       capacity,
       price,
@@ -104,29 +104,29 @@ componentDidMount() {
       
     } = this.state;
 
-    let tempProduct = [...product];
+    let tempProducts = [...products];
     // transform values
     // get capacity
     capacity = parseInt(capacity);
     price = parseInt(price);
     // filter by type
     if (type !== "all") {
-        tempProduct = tempProduct.filter(product => product.type === type);
+        tempProducts = tempProducts.filter(product => product.type === type);
     }
     // filter by capacity
     if (capacity !== 1) {
-        tempProduct = tempProduct.filter(product => product.capacity >= capacity);
+        tempProducts = tempProducts.filter(product => product.capacity >= capacity);
     }
     // filter by price
-    tempProduct = tempProduct.filter(product => product.price <= price);
+    tempProducts = tempProducts.filter(product => product.price <= price);
     //filter by size
-    tempProduct = tempProduct.filter(
+    tempProducts = tempProducts.filter(
         product => product.size >= minSize && product.size <= maxSize
     );
     
     
     this.setState({
-      sortedProduct: tempProduct
+      sortedProducts: tempProducts
     });
   };
   render() {
@@ -147,7 +147,7 @@ const ProductConsumer = ProductContext.Consumer;
 
 export { ProductProvider, ProductConsumer, ProductContext };
 
-export function withRoomConsumer(Component) {
+export function withProductConsumer(Component) {
   return function ConsumerWrapper(props) {
     return (
       <ProductConsumer>

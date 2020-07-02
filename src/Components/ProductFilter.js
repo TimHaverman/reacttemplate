@@ -7,7 +7,7 @@ const getUnique = (items, value) => {
   return [...new Set(items.map(item => item[value]))];
 };
 
-const ProductFilter = ({ product }) => {
+const ProductFilter = ({ products }) => {
   // react hooks
   const context = useContext(ProductContext);
   const {
@@ -22,7 +22,7 @@ const ProductFilter = ({ product }) => {
   } = context;
 
   // get unique types
-  let types = getUnique(product, "type");
+  let types = getUnique(products, "type");
   // add all
   types = ["all", ...types];
   // map to jsx
@@ -32,7 +32,7 @@ const ProductFilter = ({ product }) => {
     </option>
   ));
   // get unique capacity
-  let people = getUnique(product, "capacity");
+  let people = getUnique(products, "capacity");
   people = people.map((item, index) => (
     <option key={index} value={item}>
       {item}
@@ -70,7 +70,7 @@ const ProductFilter = ({ product }) => {
           </select>
         </div>
         {/* end of guests */}
-        {/* room price */}
+        {/* product price */}
         <div className="form-group">
           <label htmlFor="price">product price ${price}</label>
           <input
@@ -84,7 +84,7 @@ const ProductFilter = ({ product }) => {
             className="form-control"
           />
         </div>
-        {/* end of room price*/}
+        {/* end of product price*/}
         {/* size */}
         <div className="form-group">
           <label htmlFor="price">product size </label>
